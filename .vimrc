@@ -1,4 +1,4 @@
-set nocompatible              " be iMproved, required
+set nocompatible  
 filetype plugin indent on
 syntax on
 
@@ -20,6 +20,13 @@ Plug 'airblade/vim-gitgutter'
 Plug 'junegunn/vim-easy-align'
 Plug 'Chiel92/vim-autoformat'
 call plug#end()
+
+" goto the last open position
+autocmd BufReadPost *
+            \ if line("'\"") > 1 && line("'\"") <= line("$") |
+            \ exe "normal! g`\"" |
+            \ endif
+set colorcolumn=80
 
 set t_Co=256
 set encoding=utf-8
@@ -48,4 +55,3 @@ let g:airline_theme='dark'
 let base16colorspace=256
 
 colorscheme Tomorrow-Night
-
